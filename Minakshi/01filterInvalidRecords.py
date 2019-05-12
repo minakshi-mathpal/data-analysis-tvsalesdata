@@ -25,5 +25,5 @@ tv_sales_data_validrecords = \
 
 tv_sales_data_invalidrecords.to_csv(output_file_path_invalidrecords, header= None , sep= separator )
 tv_sales_data_validrecords.to_csv(output_file_path_validrecords, header= None , sep= separator )
-# print(tv_sales_data['CompanyName'], tv_sales_data['ProductName'])
+
 
