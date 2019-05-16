@@ -12,18 +12,17 @@ output_file_path_validrecords = \
     '/home/minal/githubcodes/data-analysis-tvsalesdata/Minakshi/output/televisionvalidrecords'
 separator = '|'
 is_header = None
+tv_sales_data = pd.read_csv(input_file_path,sep='|')
 tv_sales_columns = ['CompanyName','ProductName','Size in inches','State','Pin Code','Price']
-
-tv_sales_data = pd.read_csv(input_file_path,header=is_header,sep= separator)
-
-tv_sales_data.columns = tv_sales_columns
+tv_sales_data.columns= tv_sales_columns
+print(tv_sales_data)
 
 tv_sales_data_invalidrecords = \
     tv_sales_data[tv_sales_data['CompanyName'].isnull()| tv_sales_data['ProductName'].isnull()]
 tv_sales_data_validrecords = \
     tv_sales_data[tv_sales_data['CompanyName'].notna() & tv_sales_data['ProductName'].notna()]
 
-tv_sales_data_invalidrecords.to_csv(output_file_path_invalidrecords, header= None , sep= separator )
-tv_sales_data_validrecords.to_csv(output_file_path_validrecords, header= None , sep= separator )
+tv_sales_data_invalidrecords.to_csv(output_file_path_invalidrecords, header= tv_sales_columns , sep= separator,index=None )
+tv_sales_data_validrecords.to_csv(output_file_path_validrecords, header= tv_sales_columns , sep= separator,index = None )
 
 
